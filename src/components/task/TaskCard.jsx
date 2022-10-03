@@ -1,13 +1,13 @@
 import React from 'react'
-import { TaskAddInput } from '../input/TaskAddInput'
+import { TaskAddInput } from './input/TaskAddInput'
 import { TaskCardDeleteButton } from './button/TaskCardDeleteButton'
-import { TaskCards } from './TaskCards'
+import { TaskCardTitle } from './TaskCardTitle'
 import { Tasks } from './Tasks'
 
 export const TaskCard = () => {
   return (
     <div className='taskCard'>
-      <TaskCards />
+      <TaskCardTitle />
       <TaskCardDeleteButton />
       <TaskAddInput />
       <Tasks />
