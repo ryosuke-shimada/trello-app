@@ -8,5 +8,5 @@ export const TaskCards =() =>{
         <TaskCard />
         <AddTaskCardButton />
         </div>
-    )
-}
+    );
+};

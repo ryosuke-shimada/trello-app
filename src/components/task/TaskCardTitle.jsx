@@ -2,6 +2,8 @@ import React from 'react'
 
 export const TaskCardTitle = () => {
   return (
-    <div></div>
-  )
-}
+    <div>
+      <h3>Today</h3>
+    </div>
+  );
+};

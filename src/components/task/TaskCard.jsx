@@ -12,5 +12,5 @@ export const TaskCard = () => {
       <TaskAddInput />
       <Tasks />
     </div>
-  )
-}
+  );
+};
