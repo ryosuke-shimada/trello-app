@@ -1,9 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const TaskCardTitle = () => {
+  const [isClick , setisClick] =useState(false);
+  const [inputCardTitle,setInputCardTitle] =useState("Today");
+
+  const handleClick = ()=> {
+    setisClick(true);
+  }
+  const handleChange = (e)=> {
+    setInputCardTitle(e.target.value);
+    console.log(inputCardTitle);
+  }
+
+  const handleSubmit = (e)=> {
+    e.preventDefault();
+    setisClick(false);
+  }
+
+
+  const handleblur = ()=> {
+    setisClick(false);
+  }
+
   return (
-    <div>
-      <h3>Today</h3>
+    <div onClick={handleClick} className="taskCardTitleInputArea">
+      {isClick ? <form onSubmit={handleSubmit}>
+        <input
+        className='taskCardTitleInput'
+          autoFocus
+          type="text"
+          onChange={handleChange}
+          onBlur={handleblur}
+          value={inputCardTitle}
+          maxLength="10" /></form>
+        :<h3>{inputCardTitle}</h3>}
     </div>
   );
 };
