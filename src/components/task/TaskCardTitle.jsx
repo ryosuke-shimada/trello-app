@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
 export const TaskCardTitle = () => {
-  const [isClick , setisClick] =useState(false);
+  const [isClick , setIsClick] =useState(false);
   const [inputCardTitle,setInputCardTitle] =useState("Today");
 
   const handleClick = ()=> {
-    setisClick(true);
+    setIsClick(true);
   }
   const handleChange = (e)=> {
     setInputCardTitle(e.target.value);
@@ -14,17 +14,18 @@ export const TaskCardTitle = () => {
 
   const handleSubmit = (e)=> {
     e.preventDefault();
-    setisClick(false);
+    setIsClick(false);
   }
 
 
   const handleblur = ()=> {
-    setisClick(false);
+    setIsClick(false);
   }
 
   return (
     <div onClick={handleClick} className="taskCardTitleInputArea">
-      {isClick ? <form onSubmit={handleSubmit}>
+      {isClick ?
+      <form onSubmit={handleSubmit}>
         <input
         className='taskCardTitleInput'
           autoFocus

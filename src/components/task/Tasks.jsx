@@ -1,12 +1,45 @@
-import React from 'react'
+import React from "react";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { Task } from "./Task";
 
-export const Tasks = (inputText ,taskList) => {
+const reorder = (taskList, startIndex, endIndex) => {
+    //タスクを並び変える。
+    const remove = taskList.splice(startIndex, 1); //[2,3]
+    taskList.splice(endIndex, 0, remove[0]); //[2,1,3]
+};
 
-  return (
-    <div>
-      {taskList.map(task =>(
-        <div>{task.text}</div>
-      ))}
-    </div>
-  );
+export const Tasks = ({ taskList, setTaskList }) => {
+    const handleDrangEnd = (result) => {
+        if (result.destination) {
+            reorder(taskList, result.source.index, result.destination.index);
+
+            setTaskList(taskList);
+        }
+    };
+    return (
+        <div>
+            <DragDropContext onDragEnd={handleDrangEnd}>
+                <Droppable droppableId="droppable">
+                    {(provided) => (
+                        <div
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}
+                        >
+                            {taskList.map((task, index) => (
+                                <div key={task.id}>
+                                    <Task
+                                        task={task}
+                                        taskList={taskList}
+                                        setTaskList={setTaskList}
+                                        index={index}
+                                    />
+                                </div>
+                            ))}
+                            {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable>
+            </DragDropContext>
+        </div>
+    );
 };

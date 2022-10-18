@@ -1,13 +1,13 @@
 import { Header } from "./components/header/Header";
 import React from "react";
-import { TaskCard } from "./components/task/TaskCard";
+import { TaskCards } from "./components/task/TaskCards";
 
 
 function App (){
   return(
     <div className="app">
     <Header />
-    <TaskCard />
+    <TaskCards />
     </div>
   )
 }
